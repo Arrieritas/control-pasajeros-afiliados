@@ -41,7 +41,10 @@ def generate_passengers_control(data):
                     continue
 
                 if despachos.get(f'{key}-{value["terminal"]}-{value["jornada"]}'):
-                    if (despachos[f'{key}-{value["terminal"]}-{value["jornada"]}']["despachador"] != value["despachador"]):
+                    jornada = despachos[f'{key}-{value["terminal"]}-{value["jornada"]}']["jornada"]
+                    terminal = despachos[f'{key}-{value["terminal"]}-{value["jornada"]}']["terminal"]
+
+                    if ((jornada != value["jornada"]) and (terminal != value["terminal"])):
                         despachos[f'{key}-{value["terminal"]}-{value["jornada"]}'] = {
                         "terminal": value["terminal"],
                         "jornada": value["jornada"],
